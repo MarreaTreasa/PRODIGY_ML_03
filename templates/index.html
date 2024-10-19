@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat vs Dog Classifier</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cat vs Dog Classifier</h1>
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required />
+        <input type="submit" value="Upload and Predict" />
+      </form>
+      {% if prediction is not none %}  <!-- Use 'none' instead of 'None' -->
+      <h2>Prediction: {{ 'Cat' if prediction[0] == 0 else 'Dog' }}</h2>
+      {% endif %}
+    </div>
+  </body>
+</html>
